@@ -3,31 +3,31 @@
 ### IF YOU ARE GOING TO USE THE CHARACTER ' IN ANY OF THE OPTIONS, ESCAPE IT LIKE THIS: \' ###
 
 // MySQL details
-define('global_mysql_server', 'SERVER-HOST-OR-IP-ADDRESS');
-define('global_mysql_user', 'USERNAME');
-define('global_mysql_password', 'PASSWORD');
-define('global_mysql_database', 'DATABASE');
+define('global_mysql_server', 'eu-cdbr-azure-west-b.cloudapp.net');
+define('global_mysql_user', 'b426830e697735');
+define('global_mysql_password', 'ba08b11c');
+define('global_mysql_database', 'saunatammi1');
 
 // Salt for password encryption. Changing it is recommended. Use 9 random characters
 // This MUST be 9 characters, and must NOT be changed after users have been created
-define('global_salt', 'k4i8pa2m5');
+define('global_salt', 'xiuzm90z8');
 
 // Days to remember login (if the user chooses to remember it)
 define('global_remember_login_days', '180');
 
 // Title. Used in page title and header
-define('global_title', 'Tennis court reservation');
+define('global_title', 'Rezervácia sauny');
 
 // Organization. Used in page title and header, and as sender name in reservation reminder emails
-define('global_organization', 'Local tennis club');
+define('global_organization', 'TAMMI1');
 
 // Secret code. Can be used to only allow certain people to create a user
 // Set to '0' to disable
-define('global_secret_code', '1234');
+define('global_secret_code', '4331');
 
 // Email address to webmaster. Shown to users that want to know the secret code
 // To avoid spamming, JavaScript & Base64 is used to show email addresses when not logged in
-define('global_webmaster_email', 'your@email.address');
+define('global_webmaster_email', 'some@email.address');
 
 // Set to '1' to enable reservation reminders. Adds an option in the control panel
 // Check out the wiki for instructions on how to make it work
