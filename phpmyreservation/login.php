@@ -31,7 +31,7 @@ elseif(isset($_GET['new_user']))
 
 	<form action="." id="new_user_form"><p>
 
-	<label for="user_name_input">Čislo bytu (napr. B455):</label><br>
+	<label for="user_name_input">Číslo bytu (napr. B455):</label><br>
 	<input type="text" id="user_name_input"><br><br>
 	<label for="user_email_input">Email:</label><br>
 	<input type="text" id="user_email_input" autocapitalize="off"><br><br>
@@ -62,7 +62,7 @@ elseif(isset($_GET['new_user']))
 	<li>Heslo je zašifrované a nie je možné ho vidieť</li>
 	</ul>
 
-	<div id="user_secret_code_div">Registračný kód je kód definovaný adminom, aby sa zabránilo náhodnej registrácii ľudí mimo TAMMI 1. Je zverejnený na každej saune, prípadne je ho možné získať cez zástupcov vlastníkov na<span id="email_span"></span></div>
+	<div id="user_secret_code_div">Registračný kód je kód definovaný adminom, aby sa zabránilo náhodnému registrovaniu ľudí mimo TAMMI 1. Tento kód je možné získať cez zástupcov vlastníkov na <span id="email_span"></span></div>
 
 	<script type="text/javascript">$('#email_span').html('<a href="mailto:'+$.base64.decode('<?php echo base64_encode(global_webmaster_email); ?>')+'">'+$.base64.decode('<?php echo base64_encode(global_webmaster_email); ?>')+'</a>');</script>
 
