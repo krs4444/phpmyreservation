@@ -55,7 +55,7 @@ elseif(isset($_GET['new_user']))
 
 	</div><div>
 	
-	<p class="blue_p bold_p">Informácia:</p>
+	<p class="blue_p bold_p">Informácie:</p>
 	<ul>
 	<li>Rezerváciu je možné spraviť jedným kliknutím myši</li>
 	<li>Prístup k minulým rezerváciám</li>
@@ -96,7 +96,7 @@ else
 
 ?>
 
-	<div class="box_div" id="login_div"><div class="box_top_div">Prihlásiť</div><div class="box_body_div">
+	<div class="box_div" id="login_div"><div class="box_top_div">Prihlásenie</div><div class="box_body_div">
 
 	<form action="." id="login_form" autocomplete="off"><p>
 
