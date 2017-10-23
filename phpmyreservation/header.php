@@ -18,7 +18,7 @@ if(isset($_SESSION['logged_in']))
 
 if(isset($_SESSION['logged_in']))
 {
-	echo '<b>Dnes je: ' . date('j n Y') . '</b>';
+	echo '<b>Dnes je: ' . date('j. n. Y') . '</b>';
 }
 
 ?>
