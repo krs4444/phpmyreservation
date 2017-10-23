@@ -327,7 +327,7 @@ function toggle_reservation_time(id, week, day, time, from)
 
 	if(user_name == '')
 	{
-		$(id).html('Wait...'); 
+		$(id).html('Čakajte...'); 
 
 		$.post('reservation.php?make_reservation', { week: week, day: day, time: time }, function(data) 
 		{
@@ -399,7 +399,7 @@ function read_reservation(id, week, day, time)
 
 function read_reservation_details(id, week, day, time)
 {
-	if(typeof id != 'undefined' && $(id).html() != '' && $(id).html() != 'Wait...')
+	if(typeof id != 'undefined' && $(id).html() != '' && $(id).html() != 'Čakajte...')
 	{
 		if($('#reservation_details_div').is(':hidden'))
 		{
