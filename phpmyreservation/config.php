@@ -52,6 +52,6 @@ define('global_currency', '€');
 define('global_weeks_forward', '2');
 
 // Possible reservation times. Use the same syntax as below (TimeFrom-TimeTo)
-$global_times = array('09-10', '10-11', '11-12', '12-13', '13-14', '14-15', '15-16', '16-17', '17-18', '18-19', '19-20', '20-21');
+$global_times = array('06-07', '07-08', '08-09', '09-10', '10-11', '11-12', '12-13', '13-14', '14-15', '15-16', '16-17', '17-18', '18-19', '19-20', '20-21', '21-22', '22-23');
 
 ?>
