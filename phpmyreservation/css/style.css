@@ -57,7 +57,7 @@ div#header_div {
 }
 
 div#header_inner_div {
-    display: table;
+    display: inline-table;
     width: 100%;
     height: 100%;
 }
