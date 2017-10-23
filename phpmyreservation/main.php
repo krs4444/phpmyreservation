@@ -51,24 +51,7 @@ else
 	define('global_ua', 'CLI');
 }
 
-if(strstr(global_ua, 'iPhone') || strstr(global_ua, 'iPod') || strstr(global_ua, 'iPad') || strstr(global_ua, 'Android'))
-{
-	if(strstr(global_ua, 'AppleWebKit'))
-	{
-		if(strstr(global_ua, 'OS 5_') || strstr(global_ua, 'Android 2.3') || strstr(global_ua, 'Android 3') || strstr(global_ua, 'Android 4'))
-		{
-			define('global_css_animations', '1');
-		}
-	}
-}
-elseif(strstr(global_ua, 'Chrome') || strstr(global_ua, 'Safari') && strstr(global_ua, 'Macintosh') || strstr(global_ua, 'Safari') && strstr(global_ua, 'Windows') || strstr(global_ua, 'Firefox') || strstr(global_ua, 'Opera') || strstr(global_ua, 'MSIE 10'))
-{
-	define('global_css_animations', '1');
-}
-else
-{
-	define('global_css_animations', '0');
-}
+define('global_css_animations', '1');
 
 // Check stuff
 
