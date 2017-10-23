@@ -38,7 +38,7 @@ elseif(isset($_GET['week']))
 
 	echo '<table id="reservation_table"><colgroup span="1" id="reservation_time_colgroup"></colgroup><colgroup span="7" id="reservation_day_colgroup"></colgroup>';
 
-	$days_row = '<tr><td id="reservation_corner_td"><input type="button" class="blue_button small_button" id="reservation_today_button" value="Dnes"></td><th class="reservation_day_th">Pon.</th><th class="reservation_day_th">Uto.</th><th class="reservation_day_th">Str.</th><th class="reservation_day_th">Štv.</th><th class="reservation_day_th">Pia.</th><th class="reservation_day_th">Sob.</th><th class="reservation_day_th">Ned.</th></tr>';
+	$days_row = '<tr><td id="reservation_corner_td"><input type="button" class="blue_button small_button" id="reservation_today_button" value="Dnes"></td><th class="reservation_day_th">Pon. (' date('d.m.', strtotime("date('Y')-W$week-1")) ')</th><th class="reservation_day_th">Uto.</th><th class="reservation_day_th">Str.</th><th class="reservation_day_th">Štv.</th><th class="reservation_day_th">Pia.</th><th class="reservation_day_th">Sob.</th><th class="reservation_day_th">Ned.</th></tr>';
 
 	if($week == global_week_number)
 	{
@@ -69,7 +69,7 @@ elseif(isset($_GET['week']))
 }
 else
 {
-	echo '</div><div class="box_div" id="reservation_div"><div class="box_top_div" id="reservation_top_div"><div id="reservation_top_left_div"><a href="." id="previous_week_a">&lt; Predchádzajúci</a></div><div id="reservation_top_center_div">Rezervácie pre <span id="week_number_span">. týždeň' . global_week_number . '</span></div><div id="reservation_top_right_div"><a href="." id="next_week_a">Nasledujúci &gt;</a></div></div><div class="box_body_div"><div id="reservation_table_div"></div></div></div><div id="reservation_details_div">';
+	echo '</div><div class="box_div" id="reservation_div"><div class="box_top_div" id="reservation_top_div"><div id="reservation_top_left_div"><a href="." id="previous_week_a">&lt; Predchádzajúci</a></div><div id="reservation_top_center_div">Rezervácie pre <span id="week_number_span">' . global_week_number . '</span>. týždeň</div><div id="reservation_top_right_div"><a href="." id="next_week_a">Nasledujúci &gt;</a></div></div><div class="box_body_div"><div id="reservation_table_div"></div></div></div><div id="reservation_details_div">';
 }
 
 ?>

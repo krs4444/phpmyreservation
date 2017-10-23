@@ -142,7 +142,7 @@ function page_load(page)
 	{
 		if($('#content_div').css('opacity') == 0)
 		{
-			notify('Loading...', 300);
+			notify('Nahrávam...', 300);
 		}
 	}, 500);
 
@@ -153,7 +153,7 @@ function page_load(page)
 		{
 			if($('#reservation_table_div').is(':hidden'))
 			{
-				notify('Loading...', 300);
+				notify('Nahrávam...', 300);
 			}
 		}, 500);
 	}	
@@ -163,7 +163,7 @@ function page_load(page)
 		{
 			if($('#reservation_table_div').css('opacity') == 0)
 			{
-				notify('Loading...', 300);
+				notify('Nahrávam...', 300);
 			}
 		}, 500);
 	}
@@ -183,7 +183,7 @@ function page_loaded(page)
 
 	setTimeout(function()
 	{
-		if($('#notification_inner_cell_div').is(':visible') && $('#notification_inner_cell_div').html() == 'Loading...')
+		if($('#notification_inner_cell_div').is(':visible') && $('#notification_inner_cell_div').html() == 'Nahrávam...')
 		{
 			notify();
 		}
