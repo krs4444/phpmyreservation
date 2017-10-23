@@ -2,7 +2,7 @@
 
 // About
 
-define('global_project_name', 'phpMyReservation');
+define('global_project_name', 'Rezervácia sáun TAMMI1 (phpMyReservation)');
 define('global_project_version', '1.0');
 define('global_project_website', 'http://www.olejon.net/code/phpmyreservation/');
 

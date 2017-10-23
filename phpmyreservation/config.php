@@ -27,7 +27,7 @@ define('global_secret_code', '4331');
 
 // Email address to webmaster. Shown to users that want to know the secret code
 // To avoid spamming, JavaScript & Base64 is used to show email addresses when not logged in
-define('global_webmaster_email', 'some@email.address');
+define('global_webmaster_email', 'vlastnicitammi1@gmail.com');
 
 // Set to '1' to enable reservation reminders. Adds an option in the control panel
 // Check out the wiki for instructions on how to make it work

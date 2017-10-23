@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 
@@ -6,7 +6,7 @@
 
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 
-<title>Error</title>
+<title>Chyba</title>
 
 </head>
 
@@ -46,7 +46,7 @@ else
 
 </p>
 
-<p><a href=".">Click here to go back</a></p>
+<p><a href=".">Kliknite sem pre návrat naspäť</a></p>
 
 </body>
 

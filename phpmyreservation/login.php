@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 include_once('main.php');
 
@@ -26,43 +26,43 @@ elseif(isset($_GET['new_user']))
 
 ?>
 
-	<div class="box_div" id="login_div"><div class="box_top_div"><a href="#">Start</a> &gt; New user</div><div class="box_body_div">
+	<div class="box_div" id="login_div"><div class="box_top_div"><a href="#">Štart</a> &gt; Registrácia bytu</div><div class="box_body_div">
 	<div id="new_user_div"><div>
 
 	<form action="." id="new_user_form"><p>
 
-	<label for="user_name_input">Name:</label><br>
+	<label for="user_name_input">Čislo bytu (napr. B455):</label><br>
 	<input type="text" id="user_name_input"><br><br>
 	<label for="user_email_input">Email:</label><br>
 	<input type="text" id="user_email_input" autocapitalize="off"><br><br>
-	<label for="user_password_input">Password:</label><br>
+	<label for="user_password_input">Heslo:</label><br>
 	<input type="password" id="user_password_input"><br><br>
-	<label for="user_password_confirm_input">Confirm password:</label><br>
+	<label for="user_password_confirm_input">Heslo znova:</label><br>
 	<input type="password" id="user_password_confirm_input"><br><br>
 
 <?php
 
 	if(global_secret_code != '0')
 	{
-		echo '<label for="user_secret_code_input">Secret code: <sup><a href="." id="user_secret_code_a" tabindex="-1">What\'s this?</a></sup></label><br><input type="password" id="user_secret_code_input"><br><br>';
+		echo '<label for="user_secret_code_input">Registračný kód: <sup><a href="." id="user_secret_code_a" tabindex="-1">Čo je toto?</a></sup></label><br><input type="password" id="user_secret_code_input"><br><br>';
 	}
 
 ?>
 
-	<input type="submit" value="Create user">
+	<input type="submit" value="Zaregistruj byt">
 
 	</p></form>
 
 	</div><div>
 	
-	<p class="blue_p bold_p">Information:</p>
+	<p class="blue_p bold_p">Informácia:</p>
 	<ul>
-	<li>With just a click you can make your reservation</li>
-	<li>Your usage is stored automatically</li>
-	<li>Your password is encrypted and can't be read</li>
+	<li>Rezerváciu je možné spraviť jedným kliknutím myši</li>
+	<li>Prístup k minulým rezerváciám</li>
+	<li>Heslo je zašifrované a nie je možné ho vidieť</li>
 	</ul>
 
-	<div id="user_secret_code_div">Secret code is used to only allow certain people to create a new user. Contact the webmaster by email at <span id="email_span"></span> to get the secret code.</div>
+	<div id="user_secret_code_div">Registračný kód je kód definovaný adminom, aby sa zabránilo náhodnej registrácii ľudí mimo TAMMI 1. Je zverejnený na každej saune, prípadne je ho možné získať cez zástupcov vlastníkov na<span id="email_span"></span></div>
 
 	<script type="text/javascript">$('#email_span').html('<a href="mailto:'+$.base64.decode('<?php echo base64_encode(global_webmaster_email); ?>')+'">'+$.base64.decode('<?php echo base64_encode(global_webmaster_email); ?>')+'</a>');</script>
 
@@ -80,9 +80,9 @@ elseif(isset($_GET['forgot_password']))
 
 ?>
 
-	<div class="box_div" id="login_div"><div class="box_top_div"><a href="#">Start</a> &gt; Forgot password</div><div class="box_body_div">
+	<div class="box_div" id="login_div"><div class="box_top_div"><a href="#">Štart</a> &gt; Zabudnuté heslo</div><div class="box_body_div">
 
-	<p>Contact one of the admins below by email and write that you've forgotten your password, and you will get a new one. The password can be changed after logging in.</p>
+	<p>V prípade ak si nepamätáte svoje heslo, kontaktuj zástupcov vlastníkov emailom. Nové heslo Vám bude zaslané emailom. Po prihlásení si heslo budete môcť zmeniť (odporúčame).</p>
 
 	<?php echo list_admin_users(); ?>
 
@@ -96,19 +96,19 @@ else
 
 ?>
 
-	<div class="box_div" id="login_div"><div class="box_top_div">Log in</div><div class="box_body_div">
+	<div class="box_div" id="login_div"><div class="box_top_div">Prihlásiť</div><div class="box_body_div">
 
 	<form action="." id="login_form" autocomplete="off"><p>
 
 	<label for="user_email_input">Email:</label><br><input type="text" id="user_email_input" value="<?php echo get_login_data('user_email'); ?>" autocapitalize="off"><br><br>
-	<label for="user_password_input">Password:</label><br><input type="password" id="user_password_input" value="<?php echo get_login_data('user_password'); ?>"><br><br>
-	<input type="checkbox" id="remember_me_checkbox" checked="checked"> <label for="remember_me_checkbox">Remember me</label><br><br>		
-	<input type="submit" value="Log in">
+	<label for="user_password_input">Heslo:</label><br><input type="password" id="user_password_input" value="<?php echo get_login_data('user_password'); ?>"><br><br>
+	<input type="checkbox" id="remember_me_checkbox" checked="checked"> <label for="remember_me_checkbox">Zapamätaj si ma</label><br><br>		
+	<input type="submit" value="Prihlásiť">
 
 	</p></form>
 
 	<p id="login_message_p"></p>
-	<p><a href="#new_user">New user</a> | <a href="#forgot_password">Forgot password</a></p>
+	<p><a href="#new_user">Registrácia bytu</a> | <a href="#forgot_password">Zabudnuté heslo</a></p>
 
 	</div></div>
 
