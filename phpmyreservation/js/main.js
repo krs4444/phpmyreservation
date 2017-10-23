@@ -1,4 +1,4 @@
-// Show pages
+﻿// Show pages
 
 function showabout()
 {
@@ -216,7 +216,7 @@ function login()
 	var user_email = $('#user_email_input').val();
 	var user_password = $('#user_password_input').val();
 
-	$('#login_message_p').html('<img src="img/loading.gif" alt="Loading"> Logging in...').slideDown('fast');
+	$('#login_message_p').html('<img src="img/loading.gif" alt="Loading"> Prihlasujem...').slideDown('fast');
 
 	var remember_me_checkbox = $('#remember_me_checkbox').prop('checked');
 
@@ -240,7 +240,7 @@ function login()
 		{
 			if(data == '')
 			{
-				$('#login_message_p').html('<span class="error_span">Wrong email and/or password</span>');
+				$('#login_message_p').html('<span class="error_span">Nesprávny email a/alebo heslo</span>');
 				$('#user_email_input').val('');
 				$('#user_password_input').val('');
 				input_focus('#user_email_input');
@@ -255,7 +255,7 @@ function login()
 
 function logout()
 {
-	notify('Logging out...', 300);
+	notify('Odhlasujem...', 300);
 	$.get('login.php?logout', function(data) { setTimeout(function() { window.location.replace('.'); }, 1000); });
 }
 
@@ -277,14 +277,14 @@ function create_user()
 
 	if(user_password != user_password_confirm)
 	{
-		$('#new_user_message_p').html('<span class="error_span">Passwords do not match</span>').slideDown('fast');
+		$('#new_user_message_p').html('<span class="error_span">Heslá sa nezhodujú</span>').slideDown('fast');
 		$('#user_password_input').val('');
 		$('#user_password_confirm_input').val('');
 		input_focus('#user_password_input');
 	}
 	else
 	{
-		$('#new_user_message_p').html('<img src="img/loading.gif" alt="Loading"> Creating user...').slideDown('fast');
+		$('#new_user_message_p').html('<img src="img/loading.gif" alt="Loading"> Vytváram užívateľa...').slideDown('fast');
 
 		$.post('login.php?create_user', { user_name: user_name, user_email: user_email, user_password: user_password, user_secret_code: user_secret_code }, function(data)
 		{
@@ -294,7 +294,7 @@ function create_user()
 
 				setTimeout(function()
 				{
-					$('#new_user_message_p').html('User created successfully! Logging in... <img src="img/loading.gif" alt="Loading">');
+					$('#new_user_message_p').html('Užívateľ úspešne vytvorený! Prihlasujem... <img src="img/loading.gif" alt="Nahrávam">');
 					setTimeout(function() { window.location.replace('#login'); }, 2000);
 				}, 1000);
 			}
@@ -315,11 +315,11 @@ function toggle_reservation_time(id, week, day, time, from)
 	{
 		if(week < global_week_number || week == global_week_number && day < global_day_number)
 		{
-			notify('You are reserving back in time. You can do that because you\'re an admin', 4);
+			notify('Rezervujete späť v čase. Toto môžete vykonať, pretože ste admin', 4);
 		}
 		else if(week > global_week_number + global_weeks_forward)
 		{
-			notify('You are reserving more than '+global_weeks_forward+' weeks forward in time. You can do that because you\'re an admin', 4);
+            notify('Vytvárate rezerváciu skôr ' + global_weeks_forward +' týždne vopred. Toto môžete vykonať, pretože ste admin', 4);
 		}
 	}
 
@@ -346,15 +346,15 @@ function toggle_reservation_time(id, week, day, time, from)
 	{
 		if(offclick_event == 'mouseup' || from == 'details')
 		{
-			if(user_name == 'Wait...')
+			if(user_name == 'Čakajte...')
 			{
-				notify('One click is enough', 4);
+				notify('Jeden klik stačí', 4);
 			}
 			else if(user_name == session_user_name || session_user_is_admin == '1')
 			{
 				if(user_name != session_user_name && session_user_is_admin == '1')
 				{
-					var delete_confirm = confirm('This is not your reservation, but because you\'re an admin you can remove other users\' reservations. Are you sure you want to do this?');
+					var delete_confirm = confirm('Toto nie je vaša rezervácia, ale môžete ju odstrániť pretože ste admin. Ste si istý že chcete pokračovať?');
 				}
 				else
 				{
@@ -363,7 +363,7 @@ function toggle_reservation_time(id, week, day, time, from)
 
 				if(delete_confirm)
 				{
-					$(id).html('Wait...');
+					$(id).html('Čakajte...');
 
 					$.post('reservation.php?delete_reservation', { week: week, day: day, time: time }, function(data)
 					{
@@ -381,7 +381,7 @@ function toggle_reservation_time(id, week, day, time, from)
 			}
 			else
 			{
-				notify('You can\'t remove other users\' reservations', 2);
+				notify('Nemôžete odstrániť rezervácie iných', 2);
 			}
 
 			if($('#reservation_details_div').is(':visible'))
@@ -407,7 +407,7 @@ function read_reservation_details(id, week, day, time)
 			var top = position.top + 50;
 			var left = position.left - 100;
 
-			$('#reservation_details_div').html('Getting details...');
+			$('#reservation_details_div').html('Načítavam detaily...');
 			$('#reservation_details_div').css('top', top+'px').css('left', left+'px');
 			$('#reservation_details_div').fadeIn('fast');
 
@@ -422,11 +422,11 @@ function read_reservation_details(id, week, day, time)
 				{
 					if(data == 0)
 					{
-						$('#reservation_details_div').html('This reservation no longer exists. Wait...');
+						$('#reservation_details_div').html('Táto rezervácia už neexistuje. Čakajte...');
 						
 						setTimeout(function()
 						{
-							if($('#reservation_details_div').is(':visible') && $('#reservation_details_div').html() == 'This reservation no longer exists. Wait...')
+                            if ($('#reservation_details_div').is(':visible') && $('#reservation_details_div').html() == 'Táto rezervácia už neexistuje. Čakajte...')
 							{
 								read_reservation(reservation_details_id, reservation_details_week, reservation_details_day, reservation_details_time);
 								read_reservation_details();
@@ -441,14 +441,14 @@ function read_reservation_details(id, week, day, time)
 						{
 							if($(reservation_details_id).html() == session_user_name || session_user_is_admin == '1')
 							{
-								var delete_link_html = '<a href="." onclick="toggle_reservation_time(reservation_details_id, reservation_details_week, reservation_details_day, reservation_details_time, \'details\'); return false">Delete</a> | ';
+								var delete_link_html = '<a href="." onclick="toggle_reservation_time(reservation_details_id, reservation_details_week, reservation_details_day, reservation_details_time, \'details\'); return false">Vymazať</a> | ';
 							}
 							else
 							{
 								var delete_link_html = '';
 							}
 
-							$('#reservation_details_div').append('<br><br>'+delete_link_html+'<a href="." onclick="read_reservation_details(); return false">Close this</a>');
+							$('#reservation_details_div').append('<br><br>'+delete_link_html+'<a href="." onclick="read_reservation_details(); return false">Zatvoriť</a>');
 						}
 					}
 				}, 500);
@@ -474,13 +474,13 @@ function reset_user_password()
 	{
 		var user_id = $(".user_radio:checked").val();
 
-		$('#user_administration_message_p').html('<img src="img/loading.gif" alt="Loading"> Resetting password...').slideDown('fast');
+		$('#user_administration_message_p').html('<img src="img/loading.gif" alt="Loading"> Resetujem heslo...').slideDown('fast');
 
 		$.post('cp.php?reset_user_password', { user_id: user_id }, function(data)
 		{
 			if(data == 0)
 			{
-				$('#user_administration_message_p').html('<span class="error_span">You can change your password at the bottom of this page</span>').slideDown('fast');
+				$('#user_administration_message_p').html('<span class="error_span">Svoje heslo môžete zmeniť v dolnej časti tejto obrazovky</span>').slideDown('fast');
 			}
 			else
 			{
@@ -490,7 +490,7 @@ function reset_user_password()
 	}
 	else
 	{
-		$('#user_administration_message_p').html('<span class="error_span">You must pick a user</span>').slideDown('fast');
+		$('#user_administration_message_p').html('<span class="error_span">Musíte vybrať užívateľa</span>').slideDown('fast');
 	}
 }
 
@@ -500,7 +500,7 @@ function change_user_permissions()
 	{
 		var user_id = $(".user_radio:checked").val();
 
-		$('#user_administration_message_p').html('<img src="img/loading.gif" alt="Loading"> Changing permissions...').slideDown('fast');
+		$('#user_administration_message_p').html('<img src="img/loading.gif" alt="Nahrávam"> Mením práva...').slideDown('fast');
 
 		$.post('cp.php?change_user_permissions', { user_id: user_id }, function(data)
 		{
@@ -509,7 +509,7 @@ function change_user_permissions()
 				setTimeout(function()
 				{
 					list_users();
-					$('#user_administration_message_p').html('Permissions changed successfully. The user must re-login to get the new permissions');
+					$('#user_administration_message_p').html('Práva úspešne zmenené. Užívateľ sa musí znovu prihlásiť aby mal nové práva');
 				}, 1000);
 			}
 			else
@@ -520,7 +520,7 @@ function change_user_permissions()
 	}
 	else
 	{
-		$('#user_administration_message_p').html('<span class="error_span">You must pick a user</span>').slideDown('fast');
+		$('#user_administration_message_p').html('<span class="error_span">Musíte vybrať užívateľa</span>').slideDown('fast');
 	}
 }
 
@@ -528,13 +528,13 @@ function delete_user_data(delete_data)
 {
 	if(typeof $(".user_radio:checked").val() !='undefined')
 	{
-		var delete_confirm = confirm('Are you sure?');
+		var delete_confirm = confirm('Ste si istý?');
 
 		if(delete_confirm)
 		{
 			var user_id = $(".user_radio:checked").val();
 
-			$('#user_administration_message_p').html('<img src="img/loading.gif" alt="Loading"> Deleting...').slideDown('fast');
+			$('#user_administration_message_p').html('<img src="img/loading.gif" alt="Nahrávam"> Vymazávam...').slideDown('fast');
 
 			$.post('cp.php?delete_user_data', { user_id: user_id, delete_data: delete_data }, function(data)
 			{
@@ -565,7 +565,7 @@ function delete_user_data(delete_data)
 	}
 	else
 	{
-		$('#user_administration_message_p').html('<span class="error_span">You must pick a user</span>').slideDown('fast');
+		$('#user_administration_message_p').html('<span class="error_span">Musíte vybrať uživateľa</span>').slideDown('fast');
 	}
 }
 
@@ -573,20 +573,20 @@ function delete_all(delete_data)
 {
 	if(delete_data == 'reservations')
 	{
-		var delete_confirm = confirm('Are you sure you want to delete ALL reservations? Database backup is a good idea!');
+		var delete_confirm = confirm('Ste si istý, že chcete vymazať VŠETKY rezervácie?');
 	}
 	else if(delete_data == 'users')
 	{
-		var delete_confirm = confirm('Are you sure you want to delete ALL users? Database backup is a good idea!');
+		var delete_confirm = confirm('Ste si istý, že chcete vymazať VŠETKÝCH užívateľov?');
 	}
 	else if(delete_data == 'everything')
 	{
-		var delete_confirm = confirm('Are you sure you want to delete EVERYTHING (including you)? The first user created afterwards will become admin. Database backup is a good idea!');
+		var delete_confirm = confirm('Ste si istý, že chcete vymazať VŠETKO (vrátane seba)? Prvý užívateľ dostane práva admin.');
 	}
 
 	if(delete_confirm)
 	{
-		$('#database_administration_message_p').html('<img src="img/loading.gif" alt="Loading"> Deleting...').slideDown('fast');
+		$('#database_administration_message_p').html('<img src="img/loading.gif" alt="Nahrávam"> Vymazávam...').slideDown('fast');
 
 		$.post('cp.php?delete_all', { delete_data: delete_data }, function(data)
 		{
@@ -617,7 +617,7 @@ function save_system_configuration()
 {
 	var price = $('#price_input').val();
 
-	$('#system_configuration_message_p').html('<img src="img/loading.gif" alt="Loading"> Saving...');
+	$('#system_configuration_message_p').html('<img src="img/loading.gif" alt="Nahrávam"> Ukladám...');
 	$('#system_configuration_message_p').slideDown('fast');
 
 	$.post('cp.php?save_system_configuration', { price: price }, function(data)
@@ -656,7 +656,7 @@ function get_reservation_reminders()
 
 function add_one_reservation()
 {
-	$('#usage_message_p').html('<img src="img/loading.gif" alt="Loading"> Saving...').slideDown('fast');
+	$('#usage_message_p').html('<img src="img/loading.gif" alt="Nahrávam"> Ukladám...').slideDown('fast');
 
 	$.post('reservation.php?make_reservation', { week: '0', day: '0', time: '0' }, function(data)
 	{
@@ -682,7 +682,7 @@ function add_one_reservation()
 
 function toggle_reservation_reminder()
 {
-	$('#settings_message_p').html('<img src="img/loading.gif" alt="Loading"> Saving...').slideDown('fast');
+	$('#settings_message_p').html('<img src="img/loading.gif" alt="Nahrávam"> Ukladám...').slideDown('fast');
 
 	$.post('cp.php?toggle_reservation_reminder', function(data)
 	{
@@ -715,14 +715,14 @@ function change_user_details()
 
 	if(user_password != user_password_confirm)
 	{
-		$('#user_details_message_p').html('<span class="error_span">Passwords do not match</span>').slideDown('fast');
+		$('#user_details_message_p').html('<span class="error_span">Heslá sa nezhodujú</span>').slideDown('fast');
 		$('#user_password_input').val('');
 		$('#user_password_confirm_input').val('');
 		input_focus('#user_password_input');
 	}
 	else
 	{	
-		$('#user_details_message_p').html('<img src="img/loading.gif" alt="Loading"> Saving and refreshing...').slideDown('fast');
+		$('#user_details_message_p').html('<img src="img/loading.gif" alt="Nahrávam"> Ukladám a obnovujem...').slideDown('fast');
 
 		$.post('cp.php?change_user_details', { user_name: user_name, user_email: user_email, user_password: user_password }, function(data)
 		{
