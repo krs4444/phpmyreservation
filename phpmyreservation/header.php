@@ -2,7 +2,7 @@
 
 <div id="header_inner_div"><div id="header_inner_left_div">
 
-<a href="#about">O aplikácií</a>
+<a href="#">Rezervácie</a>
 
 <?php
 
