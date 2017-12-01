@@ -2,11 +2,28 @@
 
 ### IF YOU ARE GOING TO USE THE CHARACTER ' IN ANY OF THE OPTIONS, ESCAPE IT LIKE THIS: \' ###
 
+/* Azure in APP MySQL */
+$connectstr_dbhost = '';
+$connectstr_dbname = '';
+$connectstr_dbusername = '';
+$connectstr_dbpassword = '';
+
+foreach ($_SERVER as $key => $value) {
+    if (strpos($key, "MYSQLCONNSTR_") !== 0) {
+        continue;
+    }
+    
+    $connectstr_dbhost = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
+    $connectstr_dbname = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value);
+    $connectstr_dbusername = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
+    $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
+}
+
 // MySQL details
-define('global_mysql_server', 'eu-cdbr-azure-west-b.cloudapp.net');
-define('global_mysql_user', 'b426830e697735');
-define('global_mysql_password', 'ba08b11c');
-define('global_mysql_database', 'saunatammi1');
+define('global_mysql_server', $connectstr_dbhost);
+define('global_mysql_user', $connectstr_dbusername);
+define('global_mysql_password', $connectstr_dbpassword);
+define('global_mysql_database', 'localdb');
 
 // Salt for password encryption. Changing it is recommended. Use 9 random characters
 // This MUST be 9 characters, and must NOT be changed after users have been created
