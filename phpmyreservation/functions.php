@@ -301,7 +301,7 @@ function make_reservation($week, $day, $time)
 	}
 	elseif($week < global_week_number && $_SESSION['user_is_admin'] != '1' || $week == global_week_number && $day < global_day_number && $_SESSION['user_is_admin'] != '1')
 	{
-		return('You can\'t reserve back in time');
+		return('Nemôžete urobiť rezerváciu naspäť v čase.');
 	}
 	elseif($week > global_week_number + global_weeks_forward && $_SESSION['user_is_admin'] != '1')
 	{
