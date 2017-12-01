@@ -31,15 +31,15 @@ if($error_code == '1')
 }
 elseif($error_code == '2')
 {
-	echo 'You must enable JavaScript in your browser';
+	echo 'Musíte povoliť JavaScript vo svojom prehliadači';
 }
 elseif($error_code == '3')
 {
-	echo 'You must enable cookies in your browser';
+	echo 'Musíte povoliť cookies vo svojom prehliadači';
 }
 else
 {
-	echo 'Unknown error';
+	echo 'Neznáma chyba';
 }
 
 ?>
