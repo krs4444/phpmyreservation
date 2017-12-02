@@ -55,7 +55,7 @@ elseif(isset($_GET['change_user_details']))
 }
 else
 {
-	echo '<div class="box_div" id="cp_div"><div class="box_top_div"><a href="#">Start</a> &gt; Control panel</div><div class="box_body_div">';
+	echo '<div class="box_div" id="cp_div"><div class="box_top_div"><a href="#">Štart</a> &gt; Ovládací panel</div><div class="box_body_div">';
 
 	if($_SESSION['user_is_admin'] == '1')
 	{
