@@ -191,7 +191,7 @@ function create_user($user_name, $user_email, $user_password, $user_secret_code)
 	}
 	elseif(global_secret_code != '0' && $user_secret_code != global_secret_code)
 	{
-		return('<span class="error_span">Nesprávny tajný kód</span>');
+		return('<span class="error_span">Nesprávny registračný kód</span>');
 	}
 	elseif(user_name_exists($user_name) == true)
 	{
@@ -282,7 +282,7 @@ function read_reservation_details($week, $day, $time)
 	}
 	else
 	{
-		return('<b>Reservation made:</b> ' . $reservation['reservation_made_time'] . '<br><b>Email:</b> ' . $reservation['reservation_user_email']);
+		return('<b>Rezervácia urobená:</b> ' . $reservation['reservation_made_time'] . '<br><b>Email:</b> ' . $reservation['reservation_user_email']);
 	}
 }
 
