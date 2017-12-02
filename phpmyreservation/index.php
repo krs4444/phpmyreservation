@@ -35,7 +35,7 @@
 <div id="content_div"></div>
 
 <div id="preload_div">
-<img src="img/loading.gif" alt="Loading">
+<img src="img/loading.gif" alt="Nahrávam">
 </div>
 
 </body>
