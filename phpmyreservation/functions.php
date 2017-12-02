@@ -179,27 +179,27 @@ function create_user($user_name, $user_email, $user_password, $user_secret_code)
 {
 	if(validate_user_name($user_name) != true)
 	{
-		return('<span class="error_span">Name must be <u>letters and numbers only</u> and be <u>2 to 12 letters long</u>. If your name is longer, use a short version of your name</span>');
+		return('<span class="error_span">Číslo bytu môže obsahovať len <u>číslice a písmená</u> a musí byť dlhé <u>2 až 12 znakov</u></span>');
 	}
 	elseif(validate_user_email($user_email) != true)
 	{
-		return('<span class="error_span">Email must be a valid email address and be no more than 50 characters long</span>');
+		return('<span class="error_span">Email musí byť v správnom tvare a nesmie byť dlhší ako 50 znakov</span>');
 	}
 	elseif(validate_user_password($user_password) != true)
 	{
-		return('<span class="error_span">Password must be at least 4 characters</span>');
+		return('<span class="error_span">Heslo musí mať aspoň 4 znaky</span>');
 	}
 	elseif(global_secret_code != '0' && $user_secret_code != global_secret_code)
 	{
-		return('<span class="error_span">Wrong secret code</span>');
+		return('<span class="error_span">Nesprávny tajný kód</span>');
 	}
 	elseif(user_name_exists($user_name) == true)
 	{
-		return('<span class="error_span">Name is already in use. If you have the same name as someone else, use another spelling that identifies you</span>');
+		return('<span class="error_span">Číslo bytu je už zaregistrované</span>');
 	}
 	elseif(user_email_exists($user_email) == true)
 	{
-		return('<span class="error_span">Email is already registered. <a href="#forgot_password">Forgot your password?</a></span>');
+		return('<span class="error_span">Tento email je už zaregistrovaný. <a href="#forgot_password">Zabudli ste heslo?</a></span>');
 	}
 	else
 	{
@@ -282,7 +282,7 @@ function read_reservation_details($week, $day, $time)
 	}
 	else
 	{
-		return('<b>Reservation made:</b> ' . $reservation['reservation_made_time'] . '<br><b>User\'s email:</b> ' . $reservation['reservation_user_email']);
+		return('<b>Reservation made:</b> ' . $reservation['reservation_made_time'] . '<br><b>Email:</b> ' . $reservation['reservation_user_email']);
 	}
 }
 
@@ -305,7 +305,7 @@ function make_reservation($week, $day, $time)
 	}
 	elseif($week > global_week_number + global_weeks_forward && $_SESSION['user_is_admin'] != '1')
 	{
-		return('You can only reserve ' . global_weeks_forward . ' weeks forward in time');
+		return('Rezerváciu môžete urobiť iba ' . global_weeks_forward . ' týždnov vopred');
 	}
 	else
 	{
@@ -321,7 +321,7 @@ function make_reservation($week, $day, $time)
 		}
 		else
 		{
-			return('Someone else just reserved this time');
+			return('Niekto iný práve urobil rezerváciu na tento čas');
 		}
 	}
 }
@@ -330,11 +330,11 @@ function delete_reservation($week, $day, $time)
 {
 	if($week < global_week_number && $_SESSION['user_is_admin'] != '1' || $week == global_week_number && $day < global_day_number && $_SESSION['user_is_admin'] != '1')
 	{
-		return('You can\'t reserve back in time');
+		return('Nie je možné urobiť rezerváciu naspäť v čase');
 	}
 	elseif($week > global_week_number + global_weeks_forward && $_SESSION['user_is_admin'] != '1')
 	{
-		return('You can only reserve ' . global_weeks_forward . ' weeks forward in time');
+		return('Rezerváciu môžete urobiť iba ' . global_weeks_forward . ' týždnov vopred');
 	}
 	else
 	{
@@ -349,7 +349,7 @@ function delete_reservation($week, $day, $time)
 		}
 		else
 		{
-			return('You can\'t remove other users\' reservations');
+			return('Nie je možné odstrániť rezerváciu iného užívateľa');
 		}
 	}
 }
@@ -385,7 +385,7 @@ function reset_user_password($user_id)
 	}
 	else
 	{
-		return('The password to the user with ID ' . $user_id . ' is now "' . $password . '". The user can now log in and change the password');
+		return('Heslo pre úživateľa ' . $user_id . ' je teraz "' . $password . '". Užívateľ sa môže teraz prihlásiť a zmeniť si heslo.');
 	}
 }
 
@@ -451,7 +451,7 @@ function save_system_configuration($price)
 {
 	if(validate_price($price) != true)
 	{
-		return('<span class="error_span">Price must be a number (use . and not , if you want to use decimals)</span>');
+		return('<span class="error_span">Cena musí byť číslo (použite . a nie , ak chcete zadať desatinné číslo)</span>');
 	}
 	else
 	{
@@ -465,7 +465,7 @@ function save_system_configuration($price)
 
 function get_usage()
 {
-	$usage = '<table id="usage_table"><tr><th>Reservations</th><th>Cost</th><th>Current price per reservation</th></tr><tr><td>' . count_reservations($_SESSION['user_id']) . '</td><td>' . cost_reservations($_SESSION['user_id']) . ' ' . global_currency . '</td><td>' . global_price . ' ' . global_currency . '</td></tr></table>';
+	$usage = '<table id="usage_table"><tr><th>Reservations</th><th>Cost</th><th>Aktuálna cena za rezerváciu</th></tr><tr><td>' . count_reservations($_SESSION['user_id']) . '</td><td>' . cost_reservations($_SESSION['user_id']) . ' ' . global_currency . '</td><td>' . global_price . ' ' . global_currency . '</td></tr></table>';
 	return($usage);
 }
 
