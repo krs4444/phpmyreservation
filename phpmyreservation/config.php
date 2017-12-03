@@ -33,7 +33,7 @@ define('global_salt', 'xiuzm90z8');
 define('global_remember_login_days', '180');
 
 // Title. Used in page title and header
-define('global_title', 'Rezervácia sauny');
+define('global_title', 'Rezervácia sauny a spol. miestnosti');
 
 // Organization. Used in page title and header, and as sender name in reservation reminder emails
 define('global_organization', 'TAMMI1');
