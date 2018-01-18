@@ -39,7 +39,7 @@ elseif(isset($_GET['week']))
 
 	echo '<table id="reservation_table"><colgroup span="1" id="reservation_time_colgroup"></colgroup><colgroup span="7" id="reservation_day_colgroup"></colgroup>';
 
-	$days_row = '<tr><td id="reservation_corner_td"><input type="button" class="blue_button small_button" id="reservation_today_button" value="Dnes"></td><th class="reservation_day_th">Pon. (' . date('d.m.' ,getStartDate($week, $year)) . ')</th><th class="reservation_day_th">Uto. (' . $week . ')</th><th class="reservation_day_th">Str. (' . date('d.m.', strtotime("$year-W$week-3")) . ')</th><th class="reservation_day_th">Štv. (' . date('d.m.', strtotime("$year-W$week-4")) . ')</th><th class="reservation_day_th">Pia. (' . date('d.m.', strtotime("$year-W$week-5")) . ')</th><th class="reservation_day_th">Sob. (' . date('d.m.', strtotime("$year-W$week-6")) . ')</th><th class="reservation_day_th">Ned. (' . date('d.m.', strtotime("$year-W$week-7")) . ')</th></tr>';
+	$days_row = '<tr><td id="reservation_corner_td"><input type="button" class="blue_button small_button" id="reservation_today_button" value="Dnes"></td><th class="reservation_day_th">Pon. (' . getStartDate($week, $year) . ')</th><th class="reservation_day_th">Uto. (' . $week . ')</th><th class="reservation_day_th">Str. (' . date('d.m.', strtotime("$year-W$week-3")) . ')</th><th class="reservation_day_th">Štv. (' . date('d.m.', strtotime("$year-W$week-4")) . ')</th><th class="reservation_day_th">Pia. (' . date('d.m.', strtotime("$year-W$week-5")) . ')</th><th class="reservation_day_th">Sob. (' . date('d.m.', strtotime("$year-W$week-6")) . ')</th><th class="reservation_day_th">Ned. (' . date('d.m.', strtotime("$year-W$week-7")) . ')</th></tr>';
 
 	if($week == global_week_number)
 	{
@@ -75,7 +75,7 @@ else
 
 function getStartDate($week, $year) {
   $dto = new DateTime();
-  $ret = $dto->setISODate($year, $week)->format('Y-m-d');
+  $ret = $dto->setISODate($year, $week)->format('d.m.');
   return $ret;
 }
 
