@@ -75,7 +75,7 @@ else
 
 function getStartDate($week, $year, $day) {
   $dto = new DateTime();
-  $ret = $dto->(setISODate($year, $week, $day)->format('d.m.');
+  $ret = $dto->setISODate($year, $week, $day)->format('d.m.');
   return $ret;
 }
 
