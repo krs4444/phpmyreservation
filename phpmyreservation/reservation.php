@@ -22,9 +22,8 @@ elseif(isset($_GET['read_reservation']))
 {
 	$week = mysql_real_escape_string($_POST['week']);
 	$day = mysql_real_escape_string($_POST['day']);
-	$year = mysql_real_escape_string($_POST['year']);
 	$time = mysql_real_escape_string($_POST['time']);
-	echo read_reservation($week, $day, $year, $time);
+	echo read_reservation($week, $day, $time);
 }
 elseif(isset($_GET['read_reservation_details']))
 {
@@ -61,7 +60,7 @@ elseif(isset($_GET['week']))
 		{
 			$i++;
 
-			echo '<td><div class="reservation_time_div"><div class="reservation_time_cell_div" id="div:' . $year . '-' . $week . ':' . $i . ':' . $time . '" onclick="void(0)">' . read_reservation($week, $i, $year, $time) . '</div></div></td>';
+			echo '<td><div class="reservation_time_div"><div class="reservation_time_cell_div" id="div:' . $week . ':' . $i . ':' . $time . '" onclick="void(0)">' . read_reservation($week, $i, $time) . '</div></div></td>';
 		}
 
 		echo '</tr>';
