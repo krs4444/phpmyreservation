@@ -61,7 +61,7 @@ elseif(isset($_GET['week']))
 		{
 			$i++;
 
-			echo '<td><div class="reservation_time_div"><div class="reservation_time_cell_div" id="div:' . $week . ':' . $i . ':' . $time . '" onclick="void(0)">' . read_reservation($week, $i, $year, $time) . '</div></div></td>';
+			echo '<td><div class="reservation_time_div"><div class="reservation_time_cell_div" id="div:' . $year . '-' . $week . ':' . $i . ':' . $time . '" onclick="void(0)">' . read_reservation($week, $i, $year, $time) . '</div></div></td>';
 		}
 
 		echo '</tr>';
