@@ -2,6 +2,8 @@
 
 include_once('main.php');
 
+phpinfo();
+
 ?>
 
 <div class="box_div" id="about_div">
